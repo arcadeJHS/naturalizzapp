@@ -1,7 +1,7 @@
 name: Playwright Tests
 on: 
   schedule:
-    - cron: "*/60 * * * *"
+    - cron: '0,30 * * * *'
 jobs:
   test:
     timeout-minutes: 60
@@ -18,11 +18,11 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test
     - name: send telegram message on push
-        uses: appleboy/telegram-action@master
-        # if: failure()
-        if: success()
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            LE ISCRIZIONI AL CORSO DI NATURALIZAZIONE SONO APERTE! https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/2324asoc0140001_corsi-di-formazione-alla-cittadinanza
+      uses: appleboy/telegram-action@master
+      # if: failure()
+      if: success()
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          LE ISCRIZIONI AL CORSO DI NATURALIZAZIONE SONO APERTE! https://www.ifc.ti.ch/corsi/tutti-i-corsi/dettaglio/2324asoc0140001_corsi-di-formazione-alla-cittadinanza
