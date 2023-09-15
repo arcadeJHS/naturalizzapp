@@ -1,7 +1,7 @@
 name: Playwright Tests
 on: 
-  push:
-    branches: [ main, master ]
+  # push:
+  #   branches: [ main, master ]
   schedule:
     - cron: '*/30 * * * *'
 jobs:
@@ -21,8 +21,8 @@ jobs:
       run: npx playwright test
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
-      # if: failure()
-      if: success()
+      if: failure()
+      # if: success()
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
