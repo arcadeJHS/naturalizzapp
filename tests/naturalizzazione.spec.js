@@ -6,5 +6,5 @@ test('Le iscrizioni al corso di naturalizzazione sono aperte?', async ({ page })
   await page.goto(url);
   const btnIscriviti = await page.getByRole('button', { name: /iscriviti/i });
   // await expect(btnIscriviti).toHaveClass(/disabled/);
-  await expect(btnIscriviti).toBeVisible();
+  await expect(btnIscriviti).not.toBeVisible();
 });
